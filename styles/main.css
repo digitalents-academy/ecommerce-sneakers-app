@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.leftside {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.rightside {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}

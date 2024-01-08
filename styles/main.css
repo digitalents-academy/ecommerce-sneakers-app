@@ -1,19 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Kumbh+Sans:wght@400;700&family=Outfit:wght@100;600&family=Overpass:wght@400;700&family=Work+Sans:wght@400;600;700&display=swap');
+
 .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.logo {
+    height: 20px;
 }
 
 .leftside {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    gap: 40px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: hsl(220, 14%, 55%)
 }
 
 .rightside {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    gap: 20px;
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.avatar-img {
+    height: 20px;
+    width: 20px;
 }
 
 .main {

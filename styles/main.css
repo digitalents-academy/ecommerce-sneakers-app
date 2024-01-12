@@ -1,101 +1,19 @@
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Kumbh+Sans:wght@400;700&family=Outfit:wght@100;600&family=Overpass:wght@400;700&family=Work+Sans:wght@400;600;700&display=swap');
 
-@media screen and (min-width: 768px) {
-
-    .hamburger a:not(:first-child).hamburger.responsive {
-        position: relative;
-    }
-
-    .hamburger.responsive a.icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .hamburger.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-
-    .hamburger.responsive .dropdown {
-        float: none;
-    }
-
-    .hamburger.responsive .dropdown-content {
-        position: relative;
-    }
-
-    .hamburger.responsive .dropdown .dropbtn {
-        display: block;
-        width: 100%;
-        text-align: left;
-    }
-
-    .hamburger,
-    .menu {
-        display: none;
-    }
-
-    .hamburger a.icon {
-        float: left;
-        display: none;
-    }
+/* General Styles */
+body {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Kumbh Sans', sans-serif;
+    padding-left: 150px;
 }
 
-/* Dropdown Button */
-.menu {
-    float: left;
-    overflow: hidden;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.menu:hover,
-.menu:focus {}
-
-/* The container <div> - needed to position the dropdown content */
-.hamburger {
-    position: relative;
-    display: inline;
-    overflow: hidden;
-
-}
-
-/* Dropdown Content (Hidden by Default) */
-.menu-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.menu-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-/* Change color of dropdown links on hover */
-.menu-content a:hover {
-    background-color: #ddd;
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {
-    display: block;
-}
-
-
+/* Navbar Styles */
 .navbar {
     display: flex;
     flex-direction: row;
@@ -103,25 +21,84 @@
     align-items: center;
     height: 80px;
     border-bottom: 1px solid hsl(0, 0%, 75%);
-    font-family: 'Kumbh Sans',
-        sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
+/* Styles for the hamburger menu image */
+.hamburger-menu {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    padding-right: 20px;
+    opacity: 1; /* Set initial opacity to 1 */
+    transition: opacity 0.5s ease-in-out;
+}
 
+@media screen and (min-width: 770px) {
+    .hamburger-menu {
+        opacity: 0; /* Hide the menu for larger screens */
+    }
+}
 
-.hamburger #links {}
+.extended-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(19, 25, 33);
+    z-index: 1;
+    width: 200px;
+    height: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
 
-.hamburger a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+    /* Add a class to open the menu */
+    .extended-menu.open {
+        display: block;
+        max-height: 100%;
+        opacity: 1;
+        overflow: visible;
+    }
+
+    /* Add styles for the close button */
+    .close-button {
+        position: fixed; /* Change to fixed */
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 2;
+    }
+
+    /* Add styles for the close button on hover */
+    .close-button:hover {
+        color: #ddd;
+    }
+
+  .extended-menu ul {
+    text-align: center; /* Center-align the text within the ul */
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .extended-menu li {
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-align: center; /* Center-align the text within the li */
+  }
+  
+  .extended-menu a {
+    color: #ffffff;
+    font-weight: bold;
     text-decoration: none;
-    font-size: 17px;
-}
-
-.hamburger a.icon {}
+    display: block;
+    white-space: nowrap; /* Prevent text from wrapping */
+    /* Add more styles as needed */
+  }
 
 .logo {
     height: 20px;
@@ -130,7 +107,7 @@
 .leftside {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    align-items: center;
     gap: 40px;
 }
 
@@ -144,7 +121,7 @@
 
 a {
     text-decoration: none;
-    color: hsl(220, 14%, 55%)
+    color: hsl(220, 14%, 55%);
 }
 
 .rightside {
@@ -154,18 +131,11 @@ a {
     gap: 20px;
 }
 
-.cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
+.cart,
 .avatar {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .avatar-img {
@@ -173,6 +143,7 @@ a {
     width: 35px;
 }
 
+/* Main Section Styles */
 .main {
     display: flex;
     flex-direction: row;
@@ -180,29 +151,11 @@ a {
     height: 100vh;
 }
 
-
-
-body {
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Kumbh Sans', sans-serif;
-    padding-left: 150px;
-}
-
-
 .container {
-
     display: flex;
     flex-direction: row;
     padding-right: 80px;
-
 }
-
-
 
 .sub-title.column {
     padding: 20px;
@@ -210,7 +163,6 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 .sub-title {
@@ -219,9 +171,6 @@ body {
     text-transform: uppercase;
     font-size: 15px;
     letter-spacing: 1.5px;
-
-
-
 }
 
 .title {
@@ -229,7 +178,6 @@ body {
     font-size: 40px;
     display: flex;
     padding-bottom: 40px;
-
 }
 
 .description {
@@ -256,18 +204,13 @@ body {
     padding: 5px;
     padding-left: 10px;
     border-radius: 5px;
-
-
 }
-
 
 .price-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
-
 
 .old-price {
     color: rgb(185, 185, 185);
@@ -277,44 +220,18 @@ body {
 }
 
 .price-column {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-
 }
-
-
 
 .buttons {
     display: flex;
     align-items: center;
     gap: 10px;
-
-
 }
 
-.minus {
-    cursor: pointer;
-    border: none;
-    height: 50px;
-    width: 60px;
-    background-color: rgb(243, 243, 243);
-    border-radius: 5px;
-
-
-
-
-}
-
-.minus:hover {
-    background-color: rgb(243, 243, 243);
-    opacity: 50%;
-    border-radius: 5px;
-}
-
-
+.minus,
 .plus {
     cursor: pointer;
     border: none;
@@ -322,11 +239,9 @@ body {
     width: 60px;
     background-color: rgb(243, 243, 243);
     border-radius: 5px;
-
-
 }
 
-
+.minus:hover,
 .plus:hover {
     background-color: rgb(243, 243, 243);
     opacity: 50%;
@@ -346,10 +261,6 @@ body {
     font-weight: 600;
     text-align: center;
     padding: 26px;
-
-
-
-
 }
 
 .add-button:hover {
@@ -364,9 +275,7 @@ body {
     padding-left: 25px;
     margin-top: -10px;
     margin-left: 10px;
-
 }
-
 
 .addtocart {
     margin-top: -15px;

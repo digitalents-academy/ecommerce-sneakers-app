@@ -12,45 +12,51 @@
 <body>
   <div class="navbar">
     <div class="leftside">
-      <div class="hamburger" id="hamburger">
-        <img class="menu" onclick="myFunction()" src="./images/icon-menu.svg">
-        <div id="menu" class="menu-content">
-          <a href="#">Collections</a>
-          <a href="#">Men</a>
-          <a href="#">Women</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+        <img class="hamburger-menu" src="images/icon-menu.svg" alt="Hamburger Menu">
+        <div class="extended-menu">
+            <div class="close-button" id="closeButton">X</div>
+            <ul>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <!-- Add more menu items as needed -->
+            </ul>
         </div>
-      </div>
-      <img class="logo" src="./images/logo.svg">
-      <div class="links" id="links">
-        <div class="link">
-          <a href="">Collections</a>
-        </div>
-        <div class="link">
-          <a href="">Men</a>
-        </div>
-        <div class="link">
-          <a href="">Women</a>
-        </div>
-        <div class="link">
-          <a href="">About</a>
-        </div>
-        <div class="link">
-          <a href="">Contact</a>
-        </div>
-      </div>
+        <!-- Add overlay element here -->
+        <div class="overlay" id="overlay"></div>
     </div>
 
-    <div class="rightside">
-      <div class="cart">
-        <img src="./images/icon-cart.svg">
-      </div>
-      <div class="avatar">
-        <img class="avatar-img" src="./images/image-avatar.png">
-      </div>
+    <img class="logo" src="./images/logo.svg">
+
+    <div class="links" id="links">
+        <div class="link">
+            <a href="">Collections</a>
+        </div>
+        <div class="link">
+            <a href="">Men</a>
+        </div>
+        <div class="link">
+            <a href="">Women</a>
+        </div>
+        <div class="link">
+            <a href="">About</a>
+        </div>
+        <div class="link">
+            <a href="">Contact</a>
+        </div>
     </div>
-  </div>
+    <div class="rightside">
+        <div class="cart">
+            <img src="./images/icon-cart.svg">
+        </div>
+        <div class="avatar">
+            <img class="avatar-img" src="./images/image-avatar.png">
+        </div>
+    </div>
+</div>
+
   <div class="main">
     <div class="img-carousel">
 
@@ -91,41 +97,11 @@
 
 
         </div>
-
-
-
-
-
-
       </div>
-
     </div>
   </div>
+  <script src="scripts/sneakers-app.js"></script>
   <script>
-    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-    function myFunction() {
-      var x = document.getElementById("hamburger");
-      if (x.className === "hamburger") {
-        x.className += " responsive";
-      } else {
-        x.className = "hamburger";
-      }
-    }
-    function myFunction() {
-      document.getElementById("menu").classList.toggle("show");
-    }
-    window.onclick = function (event) {
-      if (!event.target.matches('.menu')) {
-        var dropdowns = document.getElementsByClassName("menu-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
     window.addEventListener('load', function () {
       document.body.style.visibility = 'visible';
     });

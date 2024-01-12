@@ -12,8 +12,18 @@
 <body>
   <div class="navbar">
     <div class="leftside">
+      <div class="hamburger" id="hamburger">
+        <img class="menu" onclick="myFunction()" src="./images/icon-menu.svg">
+        <div id="menu" class="menu-content">
+          <a href="#">Collections</a>
+          <a href="#">Men</a>
+          <a href="#">Women</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
       <img class="logo" src="./images/logo.svg">
-      <div class="links">
+      <div class="links" id="links">
         <div class="link">
           <a href="">Collections</a>
         </div>
@@ -92,6 +102,30 @@
     </div>
   </div>
   <script>
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    function myFunction() {
+      var x = document.getElementById("hamburger");
+      if (x.className === "hamburger") {
+        x.className += " responsive";
+      } else {
+        x.className = "hamburger";
+      }
+    }
+    function myFunction() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+    window.onclick = function (event) {
+      if (!event.target.matches('.menu')) {
+        var dropdowns = document.getElementsByClassName("menu-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
     window.addEventListener('load', function () {
       document.body.style.visibility = 'visible';
     });

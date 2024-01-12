@@ -1,5 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Kumbh+Sans:wght@400;700&family=Outfit:wght@100;600&family=Overpass:wght@400;700&family=Work+Sans:wght@400;600;700&display=swap');
 
+@media screen and (min-width: 768px) {
+
+    .hamburger a:not(:first-child).hamburger.responsive {
+        position: relative;
+    }
+
+    .hamburger.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .hamburger.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .hamburger.responsive .dropdown {
+        float: none;
+    }
+
+    .hamburger.responsive .dropdown-content {
+        position: relative;
+    }
+
+    .hamburger.responsive .dropdown .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    .hamburger,
+    .menu {
+        display: none;
+    }
+
+    .hamburger a.icon {
+        float: left;
+        display: none;
+    }
+}
+
+/* Dropdown Button */
+.menu {
+    float: left;
+    overflow: hidden;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.menu:hover,
+.menu:focus {}
+
+/* The container <div> - needed to position the dropdown content */
+.hamburger {
+    position: relative;
+    display: inline;
+    overflow: hidden;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.menu-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.menu-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Change color of dropdown links on hover */
+.menu-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+
 .navbar {
     display: flex;
     flex-direction: row;
@@ -7,8 +103,25 @@
     align-items: center;
     height: 80px;
     border-bottom: 1px solid hsl(0, 0%, 75%);
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: 'Kumbh Sans',
+        sans-serif;
 }
+
+
+
+.hamburger #links {}
+
+.hamburger a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.hamburger a.icon {}
 
 .logo {
     height: 20px;
@@ -56,8 +169,8 @@ a {
 }
 
 .avatar-img {
-    height: 20px;
-    width: 20px;
+    height: 35px;
+    width: 35px;
 }
 
 .main {

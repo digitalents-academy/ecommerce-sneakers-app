@@ -10,95 +10,97 @@
 </head>
 
 <body>
-  <div class="navbar">
-    <div class="leftside">
-        <img class="hamburger-menu" src="images/icon-menu.svg" alt="Hamburger Menu">
-        <div class="extended-menu">
-            <div class="close-button" id="closeButton">X</div>
+  <div class="content">
+
+    <div class="navbar">
+      <div class="leftside">
+        <div class="menu-logo">
+
+
+          <img class="hamburger-menu" src="images/icon-menu.svg" alt="Hamburger Menu">
+          <div class="extended-menu">
+            <img class="close-button" src="./images/icon-close.svg" id="closeButton"></img>
             <ul>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">Men</a></li>
-                <li><a href="#">Women</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <!-- Add more menu items as needed -->
+              <li><a href="#">Collections</a></li>
+              <li><a href="#">Men</a></li>
+              <li><a href="#">Women</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <!-- Add more menu items as needed -->
             </ul>
+          </div>
+          <img class="logo" src="./images/logo.svg">
         </div>
-        <!-- Add overlay element here -->
-        <div class="overlay" id="overlay"></div>
-    </div>
-
-    <img class="logo" src="./images/logo.svg">
-
-    <div class="links" id="links">
-        <div class="link">
+        <div class="links" id="links">
+          <div class="link">
             <a href="">Collections</a>
-        </div>
-        <div class="link">
+          </div>
+          <div class="link">
             <a href="">Men</a>
-        </div>
-        <div class="link">
+          </div>
+          <div class="link">
             <a href="">Women</a>
-        </div>
-        <div class="link">
+          </div>
+          <div class="link">
             <a href="">About</a>
-        </div>
-        <div class="link">
+          </div>
+          <div class="link">
             <a href="">Contact</a>
+          </div>
         </div>
-    </div>
-    <div class="rightside">
-    </div>
-    <div class="cart" id="cart">
-      <img src="./images/icon-cart.svg">
-      <div class="cart-number" id="cartNumber" style="display: none;">0</div>
-  </div>
+        <div class="rightside">
+        </div>
+        <div class="cart" id="cart">
+          <img src="./images/icon-cart.svg">
+          <div class="cart-number" id="cartNumber" style="display: none;">0</div>
+        </div>
         <div class="avatar">
-            <img class="avatar-img" src="./images/image-avatar.png">
+          <img class="avatar-img" src="./images/image-avatar.png">
         </div>
+      </div>
     </div>
-</div>
 
-  <div class="main">
-    <div class="img-carousel">
+    <div class="main">
+      <div class="img-carousel">
 
-    </div>
-    <div class="product-details">
+      </div>
+      <div class="product-details">
 
-      <div class="sub-title-column">
-        <div class="sub-title">Sneaker Company</div>
+        <div class="sub-title-column">
+          <div class="sub-title">Sneaker Company</div>
 
-        <div class="title">Fall Limited Edition Sneakers</div>
+          <div class="title">Fall Limited Edition Sneakers</div>
 
-        <div class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a
-          durable rubber outer sole, they'll withstand everything the weather can offer.
-        </div>
-        <div class="price-column"></div>
-        <div class="price-row"></div>
-        <div class="price">$125.00 <div class="sale">50%</div>
+          <div class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a
+            durable rubber outer sole, they'll withstand everything the weather can offer.
+          </div>
+          <div class="price-column"></div>
+          <div class="price-row"></div>
+          <div class="price">$125.00 <div class="sale">50%</div>
 
 
-        </div>
+          </div>
 
-        <div class="old-price"><s>$250.00</s>
-        </div>
-        <div class="buttons">
+          <div class="old-price"><s>$250.00</s>
+          </div>
+          <div class="buttons">
 
-          <div class="amount">
-            <button class="minus" id="minus">
+            <div class="amount">
+              <button class="minus" id="minus">
                 <img src="./images/icon-minus.svg" />
-            </button>
-            <div class="value">0</div>
-            <button class="plus" id="plus">
+              </button>
+              <div class="value">0</div>
+              <button class="plus" id="plus">
                 <img src="./images/icon-plus.svg" />
+              </button>
+            </div>
+            <button class="add-button">
+              <img class="carticon" src="images/icon-cart-button.svg">
+              <div class="addtocart">Add to cart
             </button>
-        </div>
-          <button class="add-button">
-            <img class="carticon" src="images/icon-cart-button.svg">
-            <div class="addtocart">Add to cart
-          </button>
 
 
+          </div>
         </div>
       </div>
     </div>

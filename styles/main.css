@@ -28,7 +28,7 @@ body {
     width: 110%;
     box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.2);
     font-family: 'Kumbh Sans', sans-serif;
-
+    margin-bottom: 5%;
 }
 
 /* Styles for the hamburger menu image */
@@ -203,7 +203,19 @@ a {
     margin-left: 10px;
 }
 
-
+.cart-number {
+    font-family: 'Roboto', sans-serif;
+    font-size: 8px;
+    color: #fff;
+    background-color: #fe7d1b;
+    border-radius: 25px; /* Adjust the border-radius value */
+    padding: 2px 7px; /* Adjust the padding values */
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 .avatar-img {
     height: 35px;

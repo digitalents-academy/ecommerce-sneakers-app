@@ -3,14 +3,19 @@
 
 /* General Styles */
 body {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.content {
+    width: 80%;
     height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-family: 'Kumbh Sans', sans-serif;
-    padding-left: 150px;
 }
 
 /* Navbar Styles */
@@ -20,23 +25,42 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    border-bottom: 1px solid hsl(0, 0%, 75%);
+    width: 110%;
+    box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.2);
     font-family: 'Kumbh Sans', sans-serif;
+
 }
 
 /* Styles for the hamburger menu image */
 .hamburger-menu {
     cursor: pointer;
-    width: 25px;
-    height: 25px;
-    padding-right: 20px;
-    opacity: 1; /* Set initial opacity to 1 */
+    width: 20px;
+    height: 20px;
+    padding-right: 0px;
+    opacity: 1;
     transition: opacity 0.5s ease-in-out;
+}
+
+.menu-logo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+@media screen and (max-width: 770px) {
+    .navbar {
+        width: 100%;
+    }
+
+    .links {
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 770px) {
     .hamburger-menu {
-        opacity: 0; /* Hide the menu for larger screens */
+        display: none;
+        /* Hide the menu for larger screens */
     }
 }
 
@@ -45,7 +69,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgb(19, 25, 33);
+    background-color: white;
     z-index: 1;
     width: 200px;
     height: 100%;
@@ -53,55 +77,64 @@ body {
     opacity: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    }
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
 
-    /* Add a class to open the menu */
-    .extended-menu.open {
-        display: block;
-        max-height: 100%;
-        opacity: 1;
-        overflow: visible;
-    }
+}
 
-    /* Add styles for the close button */
-    .close-button {
-        position: fixed; /* Change to fixed */
-        top: 10px;
-        left: 10px;
-        cursor: pointer;
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: bold;
-        z-index: 2;
-    }
+/* Add a class to open the menu */
+.extended-menu.open {
+    display: block;
+    max-height: 100%;
+    opacity: 1;
+    overflow: visible;
+}
 
-    /* Add styles for the close button on hover */
-    .close-button:hover {
-        color: #ddd;
-    }
+/* Add styles for the close button */
+.close-button {
+    position: fixed;
+    /* Change to fixed */
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    color: #494545;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 2;
+}
 
-  .extended-menu ul {
-    text-align: center; /* Center-align the text within the ul */
+/* Add styles for the close button on hover */
+.close-button:hover {
+    color: #ddd;
+}
+
+.extended-menu ul {
+    text-align: center;
+    /* Center-align the text within the ul */
     list-style-type: none;
     padding: 0;
-  }
-  
-  .extended-menu li {
-    padding: 10px 20px; /* Adjust padding as needed */
-    text-align: center; /* Center-align the text within the li */
-  }
-  
-  .extended-menu a {
-    color: #ffffff;
+    margin-top: 35%;
+}
+
+.extended-menu li {
+    padding: 10px 20px;
+    /* Adjust padding as needed */
+    text-align: center;
+    /* Center-align the text within the li */
+}
+
+.extended-menu a {
+    color: black;
     font-weight: bold;
     text-decoration: none;
-    display: block;
-    white-space: nowrap; /* Prevent text from wrapping */
+    display: flex;
+    white-space: nowrap;
+    /* Prevent text from wrapping */
     /* Add more styles as needed */
-  }
+}
 
 .logo {
     height: 20px;
+    padding: 0 20px;
 }
 
 .leftside {
@@ -117,7 +150,10 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    transition: opacity 0.5s ease-in-out;
+
 }
+
 
 a {
     text-decoration: none;
@@ -131,11 +167,13 @@ a {
     gap: 20px;
 }
 
+
 .cart,
 .avatar {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-right: 10px;
 }
 
 .avatar-img {

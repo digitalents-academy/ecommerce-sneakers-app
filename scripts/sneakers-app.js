@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Optionally, set other styling properties here
         if (totalItemsInCart > 0) {
             cartNumber.style.position = 'absolute';
-            cartNumber.style.top = '-8px'; // Adjust this value as needed for proper positioning
-            cartNumber.style.right = '1px'; // Adjust this value as needed for proper positioning
+            cartNumber.style.top = '-6px'; // Adjust this value as needed for proper positioning
+            cartNumber.style.right = '6px'; // Adjust this value as needed for proper positioning
             cartNumber.style.zIndex = '2'; // Ensure the cart number is above the cart icon
         } else {
             cartNumber.style.position = 'static'; // Reset position to default

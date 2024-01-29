@@ -26,7 +26,8 @@ body {
     align-items: center;
     height: 80px;
     width: 110%;
-    margin-right: 20px; /* Add margin to the right */
+    margin-right: 20px;
+    /* Add margin to the right */
     box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.2);
     font-family: 'Kumbh Sans', sans-serif;
     margin-bottom: 5%;
@@ -185,7 +186,8 @@ a {
     flex-direction: row;
     justify-content: flex-end;
     gap: 20px;
-    margin-left: auto; /* Push the .rightside elements to the right */
+    margin-left: auto;
+    /* Push the .rightside elements to the right */
 }
 
 .cart,
@@ -210,14 +212,16 @@ a {
     font-size: 8px;
     color: #fff;
     background-color: hsl(26, 100%, 55%);
-    border-radius: 25px; /* Adjust the border-radius value */
-    padding: 2px 7px; /* Adjust the padding values */
+    border-radius: 25px;
+    /* Adjust the border-radius value */
+    padding: 2px 7px;
+    /* Adjust the padding values */
     position: absolute;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
 .avatar-img {
     height: 35px;
@@ -232,6 +236,7 @@ a {
     align-items: flex-start;
     width: 100%;
     height: 100vh;
+    gap: 90px;
 }
 
 .img-carousel img {
@@ -241,6 +246,8 @@ a {
     margin-right: 20px;
     border-radius: 10px;
 }
+
+
 
 .small-images {
     display: flex;
@@ -259,7 +266,8 @@ a {
     cursor: pointer;
     margin-right: 10px;
     transition: border-color 0.3s ease, opacity 0.3s ease;
-    flex-shrink: 1; /* Allow small images to shrink */
+    flex-shrink: 1;
+    /* Allow small images to shrink */
 }
 
 
@@ -273,7 +281,8 @@ a {
 }
 
 .small-images img:first-child {
-    margin-left: 0; /* Reset left margin for the first child */
+    margin-left: 0;
+    /* Reset left margin for the first child */
 }
 
 .small-images img:last-child {
@@ -294,12 +303,24 @@ a {
     transform: translate(-50%, -50%);
 }
 
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+    width: 50%;
+    height: 550px;
+    padding-top: 50px;
+}
+
 /* Adjustments for smaller screens */
 @media (max-width: 768px) {
     .focused-image {
         max-width: 95%;
-        max-height: 70vh; /* You can adjust this value based on your preference */
-        top: 50%; /* Adjust the top position for smaller screens */
+        max-height: 70vh;
+        /* You can adjust this value based on your preference */
+        top: 50%;
+        /* Adjust the top position for smaller screens */
     }
 }
 
@@ -310,17 +331,22 @@ a {
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: space-between;
-    width: 90%; /* Adjust the width to match the .focused-image */
-    max-width: 70vh; /* Match the max-height of the .focused-image */
+    width: 90%;
+    /* Adjust the width to match the .focused-image */
+    max-width: 70vh;
+    /* Match the max-height of the .focused-image */
     z-index: 3;
 }
 
 /* Adjustments for smaller screens */
 @media (min-width: 769px) {
     .focused-image-buttons {
-        width: 90%; /* Adjust the width for larger screens */
-        max-width: 75.4vh; /* Adjust the max-height for larger screens */
-        left: 5%; /* Adjust the distance from the left edge */
+        width: 90%;
+        /* Adjust the width for larger screens */
+        max-width: 75.4vh;
+        /* Adjust the max-height for larger screens */
+        left: 5%;
+        /* Adjust the distance from the left edge */
         transform: translateY(-50%);
     }
 }
@@ -329,10 +355,12 @@ a {
     background-color: white;
     border: none;
     border-radius: 50%;
-    padding: 20px; /* Adjust the padding for smaller buttons */
+    padding: 20px;
+    /* Adjust the padding for smaller buttons */
     cursor: pointer;
     margin: 0;
-    width: 60px; /* Adjust the width for smaller buttons */
+    width: 60px;
+    /* Adjust the width for smaller buttons */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -372,9 +400,10 @@ a {
 
 /* Apply hover and active styles to focused small images */
 .focused-small-images img:hover {
-    opacity: 0.5 !important; /* Add !important to ensure it takes precedence */
+    opacity: 0.5 !important;
+    /* Add !important to ensure it takes precedence */
 }
-  
+
 .sub-title.column {
     padding: 20px;
     display: flex;
@@ -395,11 +424,11 @@ a {
     font-weight: 600;
     font-size: 40px;
     display: flex;
-    padding-bottom: 40px;
+
 }
 
 .description {
-    padding-bottom: 30px;
+
     font-size: 16px;
     color: rgb(145, 145, 145);
 }
@@ -433,7 +462,7 @@ a {
 .old-price {
     color: rgb(185, 185, 185);
     font-size: 13px;
-    padding-bottom: 20px;
+
     font-weight: bold;
 }
 

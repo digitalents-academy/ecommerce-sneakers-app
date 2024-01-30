@@ -54,6 +54,7 @@ closeButton.addEventListener('click', function () {
     shouldHideOverlay = true; // Set to true when closing the menu
 });
 
+// Add a resize event listener to handle window resizing
 window.addEventListener('resize', function () {
     // Clear the previous timeout
     clearTimeout(resizeTimeout);
@@ -61,9 +62,12 @@ window.addEventListener('resize', function () {
     // Close the extended menu immediately on window resize
     extendedMenu.classList.remove('open');
     overlay.classList.remove('active');
-    
+
     // Clear focused-image-buttons
     clearFocusedImageButtons();
+
+    // Clear and remove close button
+    clearCloseButton();
 
     // Add a timeout to handle resize events more efficiently
     resizeTimeout = setTimeout(function () {
@@ -132,15 +136,44 @@ imgCarousel.querySelector('img').addEventListener('click', function () {
         // Append the focused-small-images container under the focused image
         overlay.appendChild(focusedSmallImagesContainer);
 
-        // Set the initial active state for focused-small-images
-        setInitialActiveState();
+    // Set the initial active state for focused-small-images
+    setInitialActiveState();
 
-        // Highlight the corresponding small image in focused-small-images container
-        const focusedSmallImage = focusedSmallImagesContainer.querySelector(`img[data-img="${focusedImageSrc}"]`);
-        if (focusedSmallImage) {
-            focusedSmallImage.classList.add('active');
-        }
+    // Highlight the corresponding small image in focused-small-images container
+    const focusedSmallImage = focusedSmallImagesContainer.querySelector(`img[data-img="${focusedImageSrc}"]`);
+    if (focusedSmallImage) {
+        focusedSmallImage.classList.add('active');
+    }
 
+    // Create close button (X)
+    const closeButton = document.createElement('button');
+    closeButton.classList.add('close-button');
+    closeButton.innerHTML = '&times;'; // Use a Unicode character or any other content
+
+    // Calculate the left position for the close button dynamically
+    const closeButtonLeftPosition = focusedImage.getBoundingClientRect().left + focusedImage.offsetWidth - closeButton.offsetWidth - 20; // Adjust as needed
+    closeButton.style.left = closeButtonLeftPosition + 'px';
+
+    // Calculate the top position for the close button dynamically
+    const closeButtonTopPosition = focusedImage.getBoundingClientRect().top + -40; // Adjust as needed
+    closeButton.style.top = closeButtonTopPosition + 'px';
+
+    // Event listener for close button click
+    closeButton.addEventListener('click', function () {
+        // Clear the focused-image-buttons
+        clearFocusedImageButtons();
+
+        // Close the overlay
+        overlay.classList.remove('active');
+
+        // Remove the close button
+        closeButton.remove();
+    });
+
+    // Append the close button to the overlay
+    overlay.appendChild(closeButton);
+
+    
         // Create focused-image-buttons container
         const focusedImageButtonsContainer = document.createElement('div');
         focusedImageButtonsContainer.classList.add('focused-image-buttons');
@@ -232,6 +265,14 @@ if (leftArrowButton) {
 const rightArrowButton = document.querySelector('.right-arrow');
 if (rightArrowButton) {
     rightArrowButton.addEventListener('click', () => changeImage(1));
+}
+
+// Function to clear and remove the close button
+function clearCloseButton() {
+    const closeButton = document.querySelector('.close-button');
+    if (closeButton) {
+        closeButton.remove();
+    }
 }
 
 

@@ -234,6 +234,14 @@ a {
     height: 100vh;
 }
 
+/* Media query for screens with a width of 786px and under */
+@media (max-width: 786px) {
+    .main {
+        width: 100%; /* Set the width to 100% for screens with a width of 786px and under */
+        flex-direction: column;
+    }
+}
+
 .img-carousel img {
     max-width: 100%;
     max-height: 550px;
@@ -281,23 +289,23 @@ a {
 }
 
 .focused-image {
-    max-width: 90%;
-    max-height: 70vh;
+    max-width: 90%; /* Adjust the percentage as needed */
+    max-height: 70vh; /* Adjust the viewport height as needed */
     display: block;
     margin: auto;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     z-index: 2;
     position: absolute;
-    top: 40%;
-    left: 50%;
+    top: 45%; /* Adjust the vertical position as needed */
+    left: 50%; /* Adjust the horizontal position as needed */
     transform: translate(-50%, -50%);
 }
 
 /* Adjustments for smaller screens */
 @media (max-width: 768px) {
     .focused-image {
-        max-width: 95%;
+        max-width: 95%; /* You can adjust this value based on your preference */
         max-height: 70vh; /* You can adjust this value based on your preference */
         top: 50%; /* Adjust the top position for smaller screens */
     }
@@ -305,7 +313,7 @@ a {
 
 .focused-image-buttons {
     position: absolute;
-    top: 40%;
+    top: 45%; /* Adjust the top position for smaller screens */
     left: 0;
     transform: translate(-50%, -50%);
     display: flex;
@@ -323,6 +331,21 @@ a {
         left: 5%; /* Adjust the distance from the left edge */
         transform: translateY(-50%);
     }
+}
+
+button.close-button {
+    position: absolute;
+    background: none;
+    color: hsl(26, 100%, 55%);
+    border: none;
+    font-size: 0px; /* Adjust the font size as needed */
+    cursor: pointer;
+    font-family: 'Varela Round', sans-serif; /* Specify Varela Round as the font */
+}
+
+/* Optionally, you can add a hover effect for the close button */
+button.close-button:hover {
+    text-decoration: underline;
 }
 
 .arrow-button {
@@ -351,7 +374,7 @@ a {
     top: 82%;
     left: 51%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 95%; /* Adjust the width as needed */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,30 +383,25 @@ a {
 
 .focused-small-images img {
     max-width: 100%;
-    max-height: 100px;
+    max-height: 140px; /* Adjust the max-height as needed */
     object-fit: cover;
     border: 3px solid transparent;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 40px; /* Adjust the margin as needed */
     transition: border-color 0.3s ease, opacity 0.3s ease;
     flex-shrink: 1;
 }
+
 
 /* Apply hover and active styles to focused small images */
 .focused-small-images img:hover {
     opacity: 0.5 !important; /* Add !important to ensure it takes precedence */
 }
   
-.sub-title.column {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
+/* Sub Title Styles */
 .sub-title {
+    padding: 20px;
     color: hsl(26, 81%, 52%);
     font-weight: bold;
     text-transform: uppercase;
@@ -391,10 +409,16 @@ a {
     letter-spacing: 1.5px;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .title {
     font-weight: 600;
     font-size: 40px;
-    display: flex;
     padding-bottom: 40px;
 }
 
@@ -402,6 +426,18 @@ a {
     padding-bottom: 30px;
     font-size: 16px;
     color: rgb(145, 145, 145);
+}
+
+.price-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.price-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .price {
@@ -424,23 +460,11 @@ a {
     border-radius: 5px;
 }
 
-.price-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 .old-price {
     color: rgb(185, 185, 185);
     font-size: 13px;
     padding-bottom: 20px;
     font-weight: bold;
-}
-
-.price-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .buttons {
@@ -455,7 +479,6 @@ a {
     background-color: rgb(243, 243, 243);
     border-radius: 5px;
     min-width: 80px;
-    /* Set a minimum width to ensure buttons are always visible */
 }
 
 .minus,
@@ -473,14 +496,11 @@ a {
     background-color: rgb(243, 243, 243);
     opacity: 50%;
     border-radius: 10px;
-    /* Increase border-radius for rounded corners */
 }
 
 .value {
     font-size: 16px;
-    /* Adjust font size as needed */
     margin: 0 10px;
-    /* Adjust margin as needed */
 }
 
 .add-button {

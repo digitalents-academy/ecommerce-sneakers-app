@@ -4,7 +4,7 @@
 <head>
   <title></title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
   <link rel="stylesheet" href="./styles/main.css">
@@ -22,7 +22,7 @@
 
           <img class="hamburger-menu" src="images/icon-menu.svg" alt="Hamburger Menu">
           <div class="extended-menu">
-            <img class="close-button" src="./images/icon-close.svg" id="closeButton"></img>
+              <img class="close-button-extended-menu" src="./images/icon-close.svg" alt="Close Button" id="closeButtonExtendedMenu">
             <ul>
               <li><a href="#">Collections</a></li>
               <li><a href="#">Men</a></li>
@@ -54,9 +54,19 @@
         <div class="rightside">
         </div>
         <div class="cart" id="cart">
-          <img src="./images/icon-cart.svg">
+          <img src="./images/icon-cart.svg" alt="Cart Icon">
           <div class="cart-number" id="cartNumber" style="display: none;">0</div>
-        </div>
+          <!-- Cart Dropdown Menu -->
+          <div class="cart-dropdown" id="cartDropdown">
+              <ul class="cart-items">
+                  <!-- Cart items will be dynamically inserted here by JavaScript -->
+              </ul>
+              <div class="cart-total">
+                  Total: <span id="cartTotalPrice">$0</span>
+              </div>
+              <button class="cart-checkout">Checkout</button>
+          </div>
+      </div>      
         <div class="avatar">
           <img class="avatar-img" src="./images/image-avatar.png">
         </div>
@@ -76,45 +86,74 @@
           <img src="images/image-product-4-thumbnail.jpg" alt="Product 4" data-img="images/image-product-4.jpg">
         </div>
       </div>
-    
-      <div class="product-details">
-        <div class="sub-title-column">
-          <div class="sub-title">Sneaker Company</div>
-          <div class="title">Fall Limited Edition Sneakers</div>
-          <div class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</div>
-        </div>
-    
-        <div class="price-row">
-          <div class="price-column">
-            <div class="price">$125.00 <div class="sale">50%</div></div>
-            <div class="old-price"><s>$250.00</s></div>
-          </div>
-    
-          <div class="buttons">
-            <div class="amount">
-              <button class="minus" id="minus">
-                <img src="./images/icon-minus.svg" />
-              </button>
-              <div class="value">0</div>
-              <button class="plus" id="plus">
-                <img src="./images/icon-plus.svg" />
-              </button>
-            </div>
-            <button class="add-button">
-              <img class="carticon" src="images/icon-cart-button.svg">
-              <div class="addtocart">Add to cart</div>
-            </button>
-          </div>
-        </div>
+
+      <!-- New carousel rotate buttons for smaller screens -->
+      <button id="carouselRotateLeft" class="carousel-rotate-btn"><img src="images/icon-previous.svg" alt="Rotate Left"></button>
+      <button id="carouselRotateRight" class="carousel-rotate-btn"><img src="images/icon-next.svg" alt="Rotate Right"></button>
+
+    <!-- Focused Image Overlay -->
+    <div id="focusedImageOverlay" class="overlay"></div>
+
+    <!-- Focused Image Container -->
+    <div id="focusedImageContainer" class="focused-image-container">
+      <!-- Left rotation button with circular background -->
+      <button id="rotateLeftButton" class="image-rotate-button"><img src="images/icon-previous.svg" alt="Rotate Left"></button>
+      
+      <img id="focusedMainImage" src="" alt="Focused Product">
+
+      <!-- Right rotation button with circular background -->
+      <button id="rotateRightButton" class="image-rotate-button"><img src="images/icon-next.svg" alt="Rotate Right"></button>
+
+      <!-- Close button for focused view -->
+      <button id="closeFocusedView">&times;</button>
+
+      <!-- Container for smaller images -->
+      <div id="focusedSmallImages" class="focused-small-images">
+        <!-- Thumbnails will be dynamically inserted here -->
       </div>
     </div>
-    
-  <script src="scripts/sneakers-app.js"></script>
-  <script>
-    window.addEventListener('load', function () {
-      document.body.style.visibility = 'visible';
-    });
-  </script>
+
+    <div class="product-details">
+      <div class="sub-title">Sneaker Company</div>
+
+      <div class="title">Fall Limited Edition Sneakers</div>
+
+      <div class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a
+        durable rubber outer sole, they'll withstand everything the weather can offer.
+      </div>
+      <div class="price-column"></div>
+      <div class="price-row"></div>
+      <div class="price">$125.00 <div class="sale">50%</div>
+      </div>
+
+      <div class="old-price"><s>$250.00</s>
+      </div>
+      <div class="buttons">
+
+        <div class="amount">
+          <button class="minus" id="minus">
+            <img src="./images/icon-minus.svg" />
+          </button>
+          <div class="value">0</div>
+          <button class="plus" id="plus">
+            <img src="./images/icon-plus.svg" />
+          </button>
+        </div>
+        <button class="add-button">
+          <img class="carticon" src="images/icon-cart-button.svg">
+          <div class="addtocart">Add to cart
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="scripts/sneakers-app.js"></script>
+<script>
+  window.addEventListener('load', function () {
+    document.body.style.visibility = 'visible';
+  });
+</script>
 </body>
 
 </html>

@@ -300,6 +300,7 @@ a {
 }
 
 
+/* Default styles */
 .cart-dropdown {
     display: none;
     position: absolute;
@@ -311,6 +312,16 @@ a {
     width: 320px; /* Adjust based on content */
     padding: 20px;
     border-radius: 10px;
+}
+
+/* Adjust position for smaller viewports */
+@media screen and (max-width: 700px) {
+    .cart-dropdown {
+        right: auto; /* Reset right position */
+        top: calc(100% + 10px); /* Position 10px below the cart icon */
+        left: 50%; /* Position at 50% of the viewport width */
+        transform: translateX(-50%); /* Center horizontally */
+    }
 }
 
 .cart:hover .cart-dropdown {

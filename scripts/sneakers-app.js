@@ -30,6 +30,40 @@ document.addEventListener('DOMContentLoaded', function () {
         focusedImageIndex: 0,
         cartItems: []
     };
+
+    // Attempt to load cart items from localStorage
+    const savedCartItems = localStorage.getItem('cartItems');
+    if (savedCartItems) {
+        try {
+            state.cartItems = JSON.parse(savedCartItems);
+        } catch (e) {
+            console.error('Failed to parse cart items from localStorage', e);
+            // Optionally reset to empty if there's an error, depends on your error handling strategy
+            state.cartItems = [];
+        }
+    }
+
+    // Update cart number display
+    updateCartNumberDisplay();
+    
+
+    function updateCartNumberDisplay() {
+        // Calculate total items in cart and update display
+        const totalItems = state.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        elements.cartNumber.textContent = totalItems;
+        // Optionally, hide the cart number display if there are no items
+        elements.cartNumber.style.display = totalItems > 0 ? 'block' : 'none';
+    }
+
+    function updateCart() {
+        // Existing logic for adding items to the cart...
+    
+        // Save the updated cart items to localStorage
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+    
+        // Update the cart dropdown (if this is not already done within updateCartDropdown)
+        updateCartDropdown();
+    }
     
     let hideDropdownTimeout;
     
@@ -43,6 +77,17 @@ document.addEventListener('DOMContentLoaded', function () {
         hideDropdownTimeout = setTimeout(() => {
             elements.cartDropdown.style.display = 'none'; // Hide the dropdown after a delay
         }, 3000); // 3000ms = 3 seconds
+    }
+
+    function setupHideDropdownOnOutsideClick() {
+        document.addEventListener('click', function(event) {
+            // Check if the click is outside the cartDropdown and not on the cartIcon itself
+            if (!elements.cartDropdown.contains(event.target) && !elements.cartIcon.contains(event.target)) {
+                elements.cartDropdown.style.display = 'none';
+                // Clear any hide delays, to prevent unexpected behavior
+                clearTimeout(hideDropdownTimeout);
+            }
+        });
     }
     
     function updateAmount(direction) {
@@ -75,6 +120,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Item does not exist, add to cart
             state.cartItems.push(newItem);
         }
+    
+        // Save the updated cart items to localStorage
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     
         // Update cart number display and refresh the dropdown as before
         elements.cartNumber.textContent = state.cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -131,20 +179,24 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add other static event listeners here
     }
 
-    // New function to setup event listener for dynamic cart items removal
-    function setupCartItemsEventListener() {
-        document.querySelector('.cart-items').addEventListener('click', function(event) {
-            if (event.target.closest('.remove-item')) {
-                // Clear the entire cartItems array
-                state.cartItems = []; // Resets the cart
+// Function to setup event listener for dynamic cart items removal
+function setupCartItemsEventListener() {
+    document.querySelector('.cart-items').addEventListener('click', function(event) {
+        if (event.target.closest('.remove-item')) {
+            // Clear the entire cartItems array
+            state.cartItems = []; // Resets the cart
 
-                // Update UI to reflect the empty cart
-                updateCartDropdown();
-                // Since updateCart might also modify UI elements based on cart state,
-                // ensure it's correctly updating anything needed or call it here if necessary.
-            }
-        });
-    }
+            // Update localStorage to reflect the cleared cart
+            localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+
+            // Update UI to reflect the empty cart
+            updateCartDropdown();
+            updateCartNumberDisplay(); // Also update the cart number display
+
+            // No need to call updateCart here directly if updateCartDropdown and updateCartNumberDisplay handle UI updates
+        }
+    });
+}
         
     function rotateCarousel(direction) {
         const totalImages = elements.smallImages.length;
@@ -274,19 +326,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function attachEventListeners() {
         elements.hamburgerMenu.addEventListener('click', toggleOverlayAndMenu);
         elements.closeButtonExtendedMenu.addEventListener('click', toggleOverlayAndMenu);
-        elements.minusButton.addEventListener('click', () => {
-            console.log('Minus button clicked');
-            updateAmount(-1);
-        });
-        elements.plusButton.addEventListener('click', () => {
-            console.log('Plus button clicked');
-            updateAmount(1);
-        });
+        elements.minusButton.addEventListener('click', () => updateAmount(-1));
+        elements.plusButton.addEventListener('click', () => updateAmount(1));
         if (elements.cartIcon) {
             elements.cartIcon.addEventListener('mouseenter', showCartDropdown);
             elements.cartIcon.addEventListener('mouseleave', hideCartDropdownWithDelay);
         }
-    
         if (elements.cartDropdown) {
             elements.cartDropdown.addEventListener('mouseenter', showCartDropdown);
             elements.cartDropdown.addEventListener('mouseleave', hideCartDropdownWithDelay);
@@ -302,8 +347,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (elements.carouselRotateRight) {
             elements.carouselRotateRight.addEventListener('click', () => rotateCarousel(1));
+        }
         window.addEventListener('resize', debounce(updateButtonPositions, 250));
-    }
 }
 
     function debounce(func, wait, immediate) {
@@ -319,6 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    setupHideDropdownOnOutsideClick();
     updateCartDropdown();
     attachEventListeners();
 });

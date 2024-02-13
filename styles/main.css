@@ -386,6 +386,8 @@ ul.cart-items {
     width: 100%;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .avatar-img {
@@ -527,6 +529,10 @@ ul.cart-items {
     cursor: pointer;
     font-family: 'Varela Round', sans-serif; /* Apply the Varela Round font */
     font-weight: bold;
+}
+
+#closeFocusedView:hover {
+    color: hsl(26, 100%, 65%); /* Makes the color a bit brighter on hover */
 }
 
 #rotateLeftButton, #rotateRightButton {

@@ -114,11 +114,16 @@ document.addEventListener('DOMContentLoaded', function () {
     
         const existingItemIndex = state.cartItems.findIndex(item => item.name === newItem.name);
         if (existingItemIndex !== -1) {
-            // Item exists, update its quantity
-            state.cartItems[existingItemIndex].quantity += newItem.quantity;
+            // Item exists, update its quantity, but ensure it does not exceed 10
+            state.cartItems[existingItemIndex].quantity = Math.min(10, state.cartItems[existingItemIndex].quantity + newItem.quantity);
         } else {
-            // Item does not exist, add to cart
-            state.cartItems.push(newItem);
+            // Item does not exist, add to cart, but ensure total items in cart do not exceed 10
+            if (state.cartItems.length < 10) {
+                state.cartItems.push(newItem);
+            } else {
+                console.log('Cart is full.'); // Optional: for debugging
+                return; // Exit the function early
+            }
         }
     
         // Save the updated cart items to localStorage
@@ -127,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update cart number display and refresh the dropdown as before
         elements.cartNumber.textContent = state.cartItems.reduce((total, item) => total + item.quantity, 0);
         elements.cartNumber.style.display = state.cartItems.length > 0 ? 'block' : 'none';
-    
+
         updateCartDropdown();
     }
 

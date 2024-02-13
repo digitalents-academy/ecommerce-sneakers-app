@@ -213,14 +213,16 @@ a {
     font-size: 8px;
     color: #fff;
     background-color: #fe7d1b;
-    border-radius: 25px; /* Adjust the border-radius value */
-    padding: 2px 7px; /* Adjust the padding values */
+    border-radius: 25px;
+    /* Adjust the border-radius value */
+    padding: 2px 7px;
+    /* Adjust the padding values */
     position: absolute;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
 .avatar-img {
     height: 30px;

@@ -51,6 +51,13 @@ body {
 }
 
 @media screen and (max-width: 770px) {
+    body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
     .navbar {
         width: 100%;
     }
@@ -58,12 +65,79 @@ body {
     .links {
         display: none !important;
     }
+
+    .main {
+        flex-direction: column !important;
+    }
+
+    .img-carousel img {
+        border-radius: 0px !important;
+        max-width: 100%;
+        height: 550px !important;
+        object-fit: contain;
+    }
+
+    .small-images {
+        display: none !important;
+    }
+
+    .product-details {
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding-top: 0px !important;
+
+    }
+
+    .price {
+
+        flex-direction: row;
+        padding: 0;
+        min-width: 100%;
+
+    }
+
+    .old-price {
+
+        padding-left: 300px;
+        margin-top: -50px;
+        margin-bottom: 20px;
+        position: relative;
+
+    }
+
+    .buttons {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .amount {
+
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+
+    .add-button {
+
+        min-width: 100%;
+
+    }
+
+    .carticon {
+        width: 15px;
+        height: 15px;
+        display: flex;
+        padding-left: 80px !important;
+
+    }
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 771px) {
     .hamburger-menu {
         display: none;
-        /* Hide the menu for larger screens */
     }
 }
 
@@ -75,8 +149,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    /* Semi-transparent black background */
-    z-index: 1;
+    z-index: 3;
     /* Ensure the overlay is above other content */
 }
 
@@ -99,7 +172,7 @@ body {
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
-
+    z-index: 3;
 }
 
 /* Add a class to open the menu */
@@ -111,7 +184,7 @@ body {
 }
 
 /* Add styles for the close button */
-.close-button {
+.close-button-extended-menu{
     position: fixed;
     /* Change to fixed */
     top: 20px;
@@ -120,12 +193,13 @@ body {
     color: #494545;
     font-size: 20px;
     font-weight: bold;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* Add styles for the close button on hover */
 .close-button:hover {
     color: #ddd;
+    cursor: pointer;
 }
 
 .extended-menu ul {
@@ -175,7 +249,6 @@ body {
 
 }
 
-
 a {
     text-decoration: none;
     color: hsl(220, 14%, 55%);
@@ -192,6 +265,7 @@ a {
 
 .cart,
 .avatar {
+    position: relative; /* Add this line */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,22 +279,125 @@ a {
     padding-left: 25px;
     margin-top: -10px;
     margin-left: 10px;
+
 }
 
 .cart-number {
     font-family: 'Roboto', sans-serif;
-    font-size: 8px;
+    font-size: 12px;
     color: #fff;
     background-color: hsl(26, 100%, 55%);
     border-radius: 25px;
-    /* Adjust the border-radius value */
     padding: 2px 7px;
-    /* Adjust the padding values */
     position: absolute;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    top: -10px; /* Move up */
+    right: 2px; /* Move right */
+}
+
+
+/* Default styles */
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    right: -500%; /* Adjust this as needed to align under the cart icon */
+    top: 200%; /* This positions the dropdown right below the cart icon */
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 2;
+    width: 320px; /* Adjust based on content */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Adjust position for smaller viewports */
+@media screen and (max-width: 700px) {
+    .cart-dropdown {
+        right: auto; /* Reset right position */
+        top: calc(100% + 10px); /* Position 10px below the cart icon */
+        left: 50%; /* Position at 50% of the viewport width */
+        transform: translateX(-50%); /* Center horizontally */
+    }
+}
+
+.cart:hover .cart-dropdown {
+    display: block;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Space between items */
+}
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+ul.cart-items {
+    /* Add your styles here */
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    /* Add more styles as needed */
+}
+
+.cart-item img {
+    width: 100%; /* Allow the image to use 100% of the available space */
+    max-width: 50px; /* Limit the maximum width of the image */
+    height: auto;
+    margin-right: 10px; /* Adjusted margin */
+    border-radius: 5px;
+}
+
+.cart-item .title,
+.cart-item .price {
+    font-size: 14px;
+    opacity: 0.5;
+    white-space: nowrap; /* Prevent wrapping onto a new line */
+}
+
+.price-highlight {
+    opacity: 1;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+}
+
+/* Optionally, you can also specify styles for the img tag within .remove-item */
+.remove-item img {
+    cursor: pointer; /* Ensures it's clear the icon is clickable */
+    max-width: 50%;
+    padding: 5px;
+}
+
+.cart-total {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-checkout {
+    background-color: hsl(26, 100%, 55%);
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .avatar-img {
@@ -247,6 +424,45 @@ a {
     border-radius: 10px;
 }
 
+/* Rotate Buttons for Image Carousel */
+#carouselRotateLeft,
+#carouselRotateRight {
+    position: absolute;
+    top: 50%;
+    background-color: white;
+    border-radius: 50%; /* Circular shape */
+    border: none;
+    cursor: pointer;
+    width: 48px; /* Adjust based on your needs */
+    height: 48px; /* Adjust based on your needs */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+#carouselRotateLeft {
+    left: 0px; /* Adjust the distance from the left edge */
+    transform: translateY(-50%);
+}
+
+#carouselRotateRight {
+    right: 0px; /* Adjust the distance from the right edge */
+    transform: translateY(-50%);
+}
+
+#carouselRotateLeft img,
+#carouselRotateRight img {
+    width: 14px; /* Adjust based on your needs */
+    height: auto;
+}
+
+/* Hide the carousel rotate buttons above 770px width */
+@media screen and (min-width: 771px) {
+    #carouselRotateLeft,
+    #carouselRotateRight {
+        display: none;
+    }
+}
 
 
 .small-images {
@@ -270,7 +486,6 @@ a {
     /* Allow small images to shrink */
 }
 
-
 .small-images img:hover {
     opacity: 0.5;
 }
@@ -282,6 +497,7 @@ a {
 
 .small-images img:first-child {
     margin-left: 0;
+   
     /* Reset left margin for the first child */
 }
 
@@ -289,18 +505,27 @@ a {
     margin-right: 0;
 }
 
-.focused-image {
-    max-width: 90%;
-    max-height: 70vh;
-    display: block;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    position: absolute;
-    top: 40%;
+/* Focused Image Container */
+.focused-image-container {
+    display: none;
+    position: fixed;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 20; /* Above the overlay */
+    background: none;
+    width: 100%; /* Adjust based on your preference */
+    max-width: 750px; /* Adjust based on your preference */
+    min-width: 750px;
+}
+
+/* Focused Main Image */
+#focusedMainImage {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto; /* Center the image */
 }
 
 .product-details {
@@ -313,105 +538,99 @@ a {
     padding-top: 50px;
 }
 
-/* Adjustments for smaller screens */
-@media (max-width: 768px) {
-    .focused-image {
-        max-width: 95%;
-        max-height: 70vh;
-        /* You can adjust this value based on your preference */
-        top: 50%;
-        /* Adjust the top position for smaller screens */
-    }
+/* Close Button for Focused View */
+#closeFocusedView {
+    position: absolute;
+    top: -7%;
+    right: -1%;
+    background: none;
+    border: none;
+    color: hsl(26, 100%, 55%);
+    font-size: 54px;
+    cursor: pointer;
+    font-family: 'Varela Round', sans-serif; /* Apply the Varela Round font */
+    font-weight: bold;
 }
 
-.focused-image-buttons {
+#closeFocusedView:hover {
+    color: hsl(26, 100%, 65%); /* Makes the color a bit brighter on hover */
+}
+
+#rotateLeftButton, #rotateRightButton {
     position: absolute;
     top: 40%;
-    left: 0;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    /* Adjust the width to match the .focused-image */
-    max-width: 70vh;
-    /* Match the max-height of the .focused-image */
-    z-index: 3;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 50%; /* Circular shape */
+    border: none;
+    cursor: pointer;
+    width: 48px; /* Adjust based on your needs */
+    height: 48px; /* Adjust based on your needs */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
 }
 
-/* Adjustments for smaller screens */
-@media (min-width: 769px) {
-    .focused-image-buttons {
-        width: 90%;
-        /* Adjust the width for larger screens */
-        max-width: 75.4vh;
-        /* Adjust the max-height for larger screens */
-        left: 5%;
-        /* Adjust the distance from the left edge */
-        transform: translateY(-50%);
+#rotateLeftButton img,
+#rotateRightButton img {
+    width: 14px; /* Adjust based on your needs */
+    height: auto;
+}
+
+/* Hover Effect for All Buttons */
+#rotateLeftButton:hover img,
+#rotateRightButton:hover img,
+#carouselRotateLeft:hover img,
+#carouselRotateRight:hover img {
+    filter: sepia(100%) saturate(6500%) hue-rotate(30deg) brightness(200%);
+}
+
+@media screen and (min-width: 771px) {
+    #carouselRotateLeft,
+    #carouselRotateRight {
+        display: none; /* Hide the carousel rotate buttons */
     }
 }
 
-.arrow-button {
-    background-color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 20px;
-    /* Adjust the padding for smaller buttons */
+/* Style for Thumbnails in Focused View */
+.focused-small-images img {
+    width: 150px; /* Increase width for bigger thumbnails */
     cursor: pointer;
-    margin: 0;
-    width: 60px;
-    /* Adjust the width for smaller buttons */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    opacity: 0.6;
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-right: 15px; /* Adjust spacing between thumbnails, if needed */
+    margin-bottom: 15px;
+    border: 3px solid transparent; /* Add a transparent border for the normal state */
 }
-
-.arrow-button img {
-    width: 20px;
-    height: 20px;
-    display: block;
-    margin: auto;
-}
-
 
 .focused-small-images {
-    position: absolute;
-    top: 82%;
-    left: 51%;
-    transform: translateX(-50%);
-    width: 100%;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 5%;
+    gap: 20px; /* Adjust gap for spacing between items */
 }
 
-.focused-small-images img {
-    max-width: 100%;
-    max-height: 100px;
-    object-fit: cover;
-    border: 3px solid transparent;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 30px;
-    transition: border-color 0.3s ease, opacity 0.3s ease;
-    flex-shrink: 1;
+.focused-small-images img:hover, .focused-small-images img:focus {
+    opacity: 1; /* Full opacity on hover */
 }
 
-/* Apply hover and active styles to focused small images */
-.focused-small-images img:hover {
-    opacity: 0.5 !important;
-    /* Add !important to ensure it takes precedence */
+.focused-small-images img.active {
+    opacity: 1; /* Ensure active thumbnail is fully opaque */
+    border: 3px solid hsl(26, 100%, 55%); /* Highlight color for active thumbnail */
 }
 
-.sub-title.column {
-    padding: 20px;
+.product-details {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    gap: 15px;
+    justify-content: flex-start;
+    width: 50%;
+    height: 550px;
+    padding-top: 50px;
 }
-
+  
 .sub-title {
     color: hsl(26, 81%, 52%);
     font-weight: bold;

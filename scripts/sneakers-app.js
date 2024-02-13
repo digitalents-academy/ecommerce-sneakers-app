@@ -261,7 +261,6 @@ function setupCartItemsEventListener() {
     
         // Use the provided index, or find the active image index, or default to 0 if none is active
         const targetIndex = index !== null ? index : findActiveImageIndex();
-        // Ensure we have a valid targetIndex before proceeding
         if (targetIndex === -1 || elements.smallImages.length === 0) {
             console.error('No active or available image to display in focused view.');
             return; // Exit the function if no valid image is found

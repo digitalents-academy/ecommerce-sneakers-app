@@ -26,10 +26,13 @@ body {
     align-items: center;
     height: 80px;
     width: 110%;
+    margin-right: 20px;
+    /* Add margin to the right */
     box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.2);
     font-family: 'Kumbh Sans', sans-serif;
     margin-bottom: 5%;
 }
+
 
 /* Styles for the hamburger menu image */
 .hamburger-menu {
@@ -48,6 +51,15 @@ body {
 }
 
 @media screen and (max-width: 770px) {
+    body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        /* Center horizontally */
+    }
+
     .navbar {
         width: 100%;
     }
@@ -59,12 +71,79 @@ body {
     .links {
         display: none !important;
     }
+
+    .main {
+        flex-direction: column !important;
+        align-items: center;
+        /* Center all items vertically */
+    }
+
+    .img-carousel img {
+        border-radius: 0px !important;
+        max-width: 100%;
+        height: 100% !important;
+        object-fit: contain;
+    }
+
+    .sub-title {
+        color: hsl(26, 81%, 52%);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        margin-top: -10px;
+    }
+
+    .small-images {
+        display: none !important;
+    }
+
+    .product-details {
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding-top: 0px !important;
+
+    }
+
+    .price {
+
+        flex-direction: row;
+        padding: 0;
+        min-width: 100%;
+
+    }
+
+    .old-price {
+
+        padding-left: 300px;
+        margin-top: -50px;
+        margin-bottom: 20px;
+        position: relative;
+
+    }
+
+    .buttons {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .amount {
+
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .add-button {
+        min-width: 100%;
+    }
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 771px) {
     .hamburger-menu {
         display: none;
-        /* Hide the menu for larger screens */
     }
 }
 
@@ -75,9 +154,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent black background */
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3;
     /* Ensure the overlay is above other content */
 }
 
@@ -100,7 +178,7 @@ body {
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
-
+    z-index: 3;
 }
 
 /* Add a class to open the menu */
@@ -112,7 +190,7 @@ body {
 }
 
 /* Add styles for the close button */
-.close-button {
+.close-button-extended-menu {
     position: fixed;
     /* Change to fixed */
     top: 20px;
@@ -121,12 +199,13 @@ body {
     color: #494545;
     font-size: 20px;
     font-weight: bold;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* Add styles for the close button on hover */
 .close-button:hover {
     color: #ddd;
+    cursor: pointer;
 }
 
 .extended-menu ul {
@@ -176,7 +255,6 @@ body {
 
 }
 
-
 a {
     text-decoration: none;
     color: hsl(220, 14%, 55%);
@@ -186,17 +264,19 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    gap: 25px;
-    float: right;
+    gap: 20px;
+    margin-left: auto;
+    /* Push the .rightside elements to the right */
 }
-
 
 .cart,
 .avatar {
+    position: relative;
+    /* Add this line */
     display: flex;
     justify-content: center;
     align-items: center;
-
+    padding-right: 10px;
 }
 
 .carticon {
@@ -210,18 +290,138 @@ a {
 
 .cart-number {
     font-family: 'Roboto', sans-serif;
-    font-size: 8px;
+    font-size: 12px;
     color: #fff;
-    background-color: #fe7d1b;
+    background-color: hsl(26, 100%, 55%);
     border-radius: 25px;
-    /* Adjust the border-radius value */
     padding: 2px 7px;
-    /* Adjust the padding values */
     position: absolute;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    top: -10px;
+    /* Move up */
+    right: 2px;
+    /* Move right */
+}
+
+
+/* Default styles */
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    right: -500%;
+    /* Adjust this as needed to align under the cart icon */
+    top: 200%;
+    /* This positions the dropdown right below the cart icon */
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    width: 320px;
+    /* Adjust based on content */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Adjust position for smaller viewports */
+@media screen and (max-width: 700px) {
+    .cart-dropdown {
+        right: auto;
+        /* Reset right position */
+        top: calc(100% + 10px);
+        /* Position 10px below the cart icon */
+        left: 50%;
+        /* Position at 50% of the viewport width */
+        transform: translateX(-50%);
+        /* Center horizontally */
+    }
+}
+
+.cart:hover .cart-dropdown {
+    display: block;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* Space between items */
+}
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+ul.cart-items {
+    /* Add your styles here */
+    list-style-type: none;
+    /* Remove default bullet points */
+    padding: 0;
+    /* Remove default padding */
+    margin: 0;
+    /* Remove default margin */
+    /* Add more styles as needed */
+}
+
+.cart-item img {
+    width: 100%;
+    /* Allow the image to use 100% of the available space */
+    max-width: 50px;
+    /* Limit the maximum width of the image */
+    height: auto;
+    margin-right: 10px;
+    /* Adjusted margin */
+    border-radius: 5px;
+}
+
+.cart-item .title,
+.cart-item .price {
+    font-size: 14px;
+    opacity: 0.5;
+    white-space: nowrap;
+    /* Prevent wrapping onto a new line */
+}
+
+.price-highlight {
+    opacity: 1;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+}
+
+/* Optionally, you can also specify styles for the img tag within .remove-item */
+.remove-item img {
+    cursor: pointer;
+    /* Ensures it's clear the icon is clickable */
+    max-width: 50%;
+    padding: 5px;
+}
+
+.cart-total {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-checkout {
+    background-color: hsl(26, 100%, 55%);
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .avatar-img {
@@ -233,22 +433,259 @@ a {
 .main {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
     height: 100vh;
+    gap: 90px;
 }
 
-.container {
+.img-carousel img {
+    max-width: 100%;
+    max-height: 550px;
+    object-fit: contain;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+/* Rotate Buttons for Image Carousel */
+#carouselRotateLeft,
+#carouselRotateRight {
+    position: absolute;
+    top: 50%;
+    background-color: white;
+    border-radius: 50%;
+    /* Circular shape */
+    border: none;
+    cursor: pointer;
+    width: 48px;
+    /* Adjust based on your needs */
+    height: 48px;
+    /* Adjust based on your needs */
     display: flex;
-    flex-direction: row;
-    padding-right: 80px;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
 }
 
-.sub-title.column {
-    padding: 20px;
+#carouselRotateLeft {
+    left: 0px;
+    /* Adjust the distance from the left edge */
+    transform: translateY(-50%);
+}
+
+#carouselRotateRight {
+    right: 0px;
+    /* Adjust the distance from the right edge */
+    transform: translateY(-50%);
+}
+
+#carouselRotateLeft img,
+#carouselRotateRight img {
+    width: 14px;
+    /* Adjust based on your needs */
+    height: auto;
+}
+
+/* Hide the carousel rotate buttons above 770px width */
+@media screen and (min-width: 771px) {
+
+    #carouselRotateLeft,
+    #carouselRotateRight {
+        display: none;
+    }
+}
+
+
+.small-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.small-images img {
+    max-width: 100%;
+    max-height: 100px;
+    min-width: 5%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+    flex-shrink: 1;
+    /* Allow small images to shrink */
+}
+
+.small-images img:hover {
+    opacity: 0.5;
+}
+
+.small-images img.active {
+    border-color: hsl(26, 100%, 55%);
+    opacity: 0.5;
+}
+
+.small-images img:first-child {
+    margin-left: 0;
+    /* Reset left margin for the first child */
+}
+
+.small-images img:last-child {
+    margin-right: 0;
+}
+
+/* Focused Image Container */
+.focused-image-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    /* Above the overlay */
+    background: none;
+    width: 100%;
+    /* Adjust based on your preference */
+    max-width: 750px;
+    /* Adjust based on your preference */
+    min-width: 750px;
+}
+
+/* Focused Main Image */
+#focusedMainImage {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    /* Center the image */
+}
+
+.product-details {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    gap: 15px;
+    justify-content: flex-start;
+    width: 50%;
+    height: 550px;
+    padding-top: 50px;
+}
+
+/* Close Button for Focused View */
+#closeFocusedView {
+    position: absolute;
+    top: -7%;
+    right: -1%;
+    background: none;
+    border: none;
+    color: hsl(26, 100%, 55%);
+    font-size: 54px;
+    cursor: pointer;
+    font-family: 'Varela Round', sans-serif;
+    /* Apply the Varela Round font */
+    font-weight: bold;
+}
+
+#closeFocusedView:hover {
+    color: hsl(26, 100%, 65%);
+    /* Makes the color a bit brighter on hover */
+}
+
+#rotateLeftButton,
+#rotateRightButton {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 50%;
+    /* Circular shape */
+    border: none;
+    cursor: pointer;
+    width: 48px;
+    /* Adjust based on your needs */
+    height: 48px;
+    /* Adjust based on your needs */
+    display: flex;
+    /* Use flexbox for alignment */
     align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+}
+
+#rotateLeftButton img,
+#rotateRightButton img {
+    width: 14px;
+    /* Adjust based on your needs */
+    height: auto;
+}
+
+/* Hover Effect for All Buttons */
+#rotateLeftButton:hover img,
+#rotateRightButton:hover img,
+#carouselRotateLeft:hover img,
+#carouselRotateRight:hover img {
+    filter: sepia(100%) saturate(6500%) hue-rotate(30deg) brightness(200%);
+}
+
+@media screen and (min-width: 771px) {
+
+    #carouselRotateLeft,
+    #carouselRotateRight {
+        display: none;
+        /* Hide the carousel rotate buttons */
+    }
+}
+
+/* Style for Thumbnails in Focused View */
+.focused-small-images img {
+    width: 150px;
+    /* Increase width for bigger thumbnails */
+    cursor: pointer;
+    opacity: 0.6;
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-right: 15px;
+    /* Adjust spacing between thumbnails, if needed */
+    margin-bottom: 15px;
+    border: 3px solid transparent;
+    /* Add a transparent border for the normal state */
+}
+
+.focused-small-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5%;
+    gap: 20px;
+    /* Adjust gap for spacing between items */
+}
+
+.focused-small-images img:hover,
+.focused-small-images img:focus {
+    opacity: 1;
+    /* Full opacity on hover */
+}
+
+.focused-small-images img.active {
+    opacity: 1;
+    /* Ensure active thumbnail is fully opaque */
+    border: 3px solid hsl(26, 100%, 55%);
+    /* Highlight color for active thumbnail */
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+    width: 50%;
+    height: 550px;
+    padding-top: 50px;
 }
 
 .sub-title {
@@ -263,11 +700,11 @@ a {
     font-weight: 600;
     font-size: 40px;
     display: flex;
-    padding-bottom: 40px;
+
 }
 
 .description {
-    padding-bottom: 30px;
+
     font-size: 16px;
     color: rgb(145, 145, 145);
 }
@@ -301,7 +738,7 @@ a {
 .old-price {
     color: rgb(185, 185, 185);
     font-size: 13px;
-    padding-bottom: 20px;
+
     font-weight: bold;
 }
 
@@ -331,12 +768,9 @@ a {
     cursor: pointer;
     border: none;
     height: 54px;
-    /* Adjust height as needed */
     width: 50px;
-    /* Adjust width as needed */
     background-color: rgb(243, 243, 243);
     border-radius: 10px;
-    /* Increase border-radius for rounded corners */
 }
 
 .minus:hover,
@@ -355,6 +789,8 @@ a {
 }
 
 .add-button {
+    position: relative;
+    /* Ensure the container is relatively positioned */
     cursor: pointer;
     border-radius: 5px;
     border: none;
@@ -367,14 +803,27 @@ a {
     font-weight: 600;
     text-align: center;
     padding: 26px;
+    display: flex;
+    /* Enable flex layout */
+    justify-content: center;
+    /* Center the content horizontally */
+    align-items: center;
+    /* Center the content vertically */
+    position: relative;
+    /* Ensure the container is relatively positioned */
 }
 
 .add-button:hover {
-    background-color: hsl(26, 100%, 55%);
     opacity: 50%;
 }
 
+.carticon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    /* Add margin to separate the icon from the text */
+}
 
 .addtocart {
-    margin-top: -15px;
+    margin-top: 0px;
 }
